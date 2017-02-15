@@ -270,7 +270,6 @@ function setPersistantAttrs(win) {
     // on fresh windows getWindowValue throws an exception. Ignore this.
   }
   set('extensions.tabcentertest1@mozilla.com.lastUsedTimestamp', Date.now().toString());
-  mainWindow.setAttribute('toggledon', 'false'); //TODO: temporary for testing
 }
 
 function initWindow(window) {
@@ -382,6 +381,7 @@ exports.main = function (options, callbacks) {
 
     //show onboarding experience in the active window on "install"
     if (browserWindows.activeWindow === window && options.loadReason === 'install') {
+      mainWindow.setAttribute('toggledon', 'false');
       win.activeInstall = true;
     }
     initWindow(window);
